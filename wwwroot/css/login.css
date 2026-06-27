@@ -1,0 +1,667 @@
+﻿/* ==========================================================================
+   SmartDanfe ERP
+   Login Page
+   Part 1 - Figma Layout
+   ========================================================================== */
+
+/* ===========================
+   Theme
+   =========================== */
+
+:root {
+    --primary: #2563EB;
+    --primary-hover: #1D4ED8;
+    --page-bg: #F4F7FC;
+    --card-bg: #FFFFFF;
+    --text: #0F172A;
+    --text-light: #64748B;
+    --border: #E5E7EB;
+    --radius: 20px;
+    --transition: .25s ease;
+    --shadow: 0 18px 50px rgba(15,23,42,.08);
+    --font: Inter, "Segoe UI", sans-serif;
+}
+
+/* ===========================
+   Reset
+   =========================== */
+
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: var(--font);
+    background: var(--page-bg);
+}
+
+/* ===========================
+   Root
+   =========================== */
+
+.login-page {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 58% 42%;
+    background: var(--page-bg);
+}
+
+/* ===========================
+   Left Banner
+   =========================== */
+
+.left-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #EEF4FF;
+}
+
+.banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    background: #EEF4FF;
+}
+
+/* ===========================
+   Right
+   =========================== */
+
+.right-panel {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 7vh;
+    padding-left: 48px;
+    padding-right: 48px;
+    background: linear-gradient( 180deg, #FFFFFF, #F8FAFC);
+}
+
+/* ===========================
+   Card
+   =========================== */
+
+.login-card {
+    width: 430px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+/* ===========================
+   Company
+   =========================== */
+
+.company-section {
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+.company-logo {
+    width: 68px;
+    height: 68px;
+    object-fit: contain;
+    margin-bottom: 18px;
+}
+
+.company-section h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+
+.company-subtitle {
+    display: block;
+    color: var(--text-light);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* ===========================
+   Form
+   =========================== */
+
+.login-content {
+    margin-top: 8px;
+}
+
+/* ===========================
+   Animation
+   =========================== */
+
+.login-card {
+    animation: loginIn .45s ease;
+}
+
+@keyframes loginIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+
+/* ==========================================================================
+   SmartDanfe ERP
+   Login Page
+   Part 2 - Form Controls
+   ========================================================================== */
+
+
+/* ===========================
+   Form Layout
+   =========================== */
+
+.login-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+    .form-group:last-child {
+        margin-bottom: 0;
+    }
+
+
+/* ===========================
+   Syncfusion Fluent2
+   TextBox
+   =========================== */
+
+.login-card .e-float-input,
+.login-card .e-float-input.e-control-wrapper {
+    width: 100%;
+}
+
+.login-card .e-input-group,
+.login-card .e-input-group.e-control-wrapper {
+    min-height: 48px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: #FFFFFF;
+    transition: all .25s ease;
+    box-shadow: none;
+}
+
+    .login-card .e-input-group:hover {
+        border-color: #CBD5E1;
+    }
+
+    .login-card .e-input-group.e-input-focus,
+    .login-card .e-input-group.e-control-wrapper.e-input-focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(37,99,235,.10);
+    }
+
+
+/* ===========================
+   Input
+   =========================== */
+
+.login-card .e-input {
+    height: 48px;
+    padding: 0 16px;
+    font-size: 15px;
+    color: var(--text);
+    background: transparent;
+}
+
+    .login-card .e-input::placeholder {
+        color: #94A3B8;
+    }
+
+
+/* ===========================
+   Floating Label
+   =========================== */
+
+.login-card .e-float-text {
+    color: #64748B;
+    font-size: 14px;
+    transition: .2s;
+}
+
+.login-card .e-label-top {
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* ===========================
+   Validation
+   =========================== */
+
+.validation-message {
+    display: block;
+    margin-top: 6px;
+    color: #DC2626;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* ===========================
+   Login Options
+   =========================== */
+
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6px;
+    margin-bottom: 28px;
+}
+
+
+    /* ===========================
+   Remember Me
+   =========================== */
+
+    .login-options .e-checkbox-wrapper {
+        font-size: 14px;
+        color: var(--text-light);
+    }
+
+    .login-options .e-frame {
+        border-radius: 4px;
+    }
+
+
+/* ===========================
+   Forgot Password
+   =========================== */
+
+.forgot-password-button {
+    border: none;
+    background: none;
+    padding: 0;
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+    .forgot-password-button:hover {
+        color: var(--primary-hover);
+        text-decoration: underline;
+    }
+
+
+/* ===========================
+   Login Button
+   =========================== */
+
+.login-button {
+    width: 100% !important;
+    height: 46px !important;
+    border: none !important;
+    border-radius: 12px !important;
+    background: var(--primary) !important;
+    color: #FFFFFF !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    letter-spacing: .25px;
+    transition: all .25s ease;
+}
+
+    .login-button:hover {
+        background: var(--primary-hover) !important;
+        transform: translateY(-1px);
+        box-shadow: 0 8px 22px rgba(37,99,235,.25);
+    }
+
+    .login-button:active {
+        transform: none;
+    }
+
+    .login-button.e-disabled {
+        background: #CBD5E1 !important;
+        box-shadow: none;
+    }
+
+
+/* ===========================
+   Loading Spinner
+   =========================== */
+
+.spinner-border {
+    width: 14px;
+    height: 14px;
+    border-width: 2px;
+    vertical-align: middle;
+}
+
+
+/* ===========================
+   Footer
+   =========================== */
+
+.footer {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid #EEF2F7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #94A3B8;
+}
+
+    .footer strong {
+        color: #64748B;
+        font-weight: 600;
+    }
+
+
+/* ===========================
+   Links
+   =========================== */
+
+.login-card a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+    .login-card a:hover {
+        text-decoration: underline;
+    }
+
+
+/* ==========================================================================
+   SmartDanfe ERP
+   Login Page
+   Part 3 - Responsive & Final Polish
+   ========================================================================== */
+
+
+/* ===========================
+   Card Hover
+   =========================== */
+
+.login-card {
+    transition: transform .30s ease, box-shadow .30s ease;
+}
+
+    .login-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 24px 60px rgba(15,23,42,.10);
+    }
+
+
+/* ===========================
+   Logo Animation
+   =========================== */
+
+.company-logo {
+    transition: transform .30s ease;
+}
+
+    .company-logo:hover {
+        transform: scale(1.04);
+    }
+
+
+/* ===========================
+   Banner Animation
+   =========================== */
+
+.banner-image {
+    transition: transform 8s ease;
+}
+
+.left-panel:hover .banner-image {
+    transform: scale(1.03);
+}
+
+
+/* ===========================
+   Focus Accessibility
+   =========================== */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 3px solid rgba(37,99,235,.18);
+    outline-offset: 2px;
+}
+
+
+/* ===========================
+   Selection
+   =========================== */
+
+::selection {
+    background: #DBEAFE;
+    color: #1E3A8A;
+}
+
+
+/* ===========================
+   Smooth Rendering
+   =========================== */
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* ===========================
+   Responsive
+   Large Laptop
+   =========================== */
+
+@media (max-width:1400px) {
+
+    .login-page {
+        grid-template-columns: 55% 45%;
+    }
+
+    .right-panel {
+        padding-left: 36px;
+        padding-right: 36px;
+    }
+}
+
+
+/* ===========================
+   Laptop
+   =========================== */
+
+@media (max-width:1200px) {
+
+    .login-page {
+        grid-template-columns: 50% 50%;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 420px;
+    }
+}
+
+
+/* ===========================
+   Tablet Landscape
+   =========================== */
+
+@media (max-width:992px) {
+
+    .login-page {
+        grid-template-columns: 1fr;
+    }
+
+    .left-panel {
+        display: none;
+    }
+
+    .right-panel {
+        padding: 48px 24px;
+        align-items: center;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 460px;
+    }
+}
+
+
+/* ===========================
+   Tablet Portrait
+   =========================== */
+
+@media (max-width:768px) {
+
+    .right-panel {
+        padding: 32px 20px;
+    }
+
+    .login-card {
+        padding: 32px;
+    }
+
+    .company-logo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .company-section h2 {
+        font-size: 22px;
+    }
+
+    .company-subtitle {
+        font-size: 14px;
+    }
+}
+
+
+/* ===========================
+   Mobile
+   =========================== */
+
+@media (max-width:576px) {
+
+    .login-page {
+        background: #FFFFFF;
+    }
+
+    .right-panel {
+        padding: 16px;
+    }
+
+    .login-card {
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 16px;
+        width: 100%;
+    }
+
+    .company-section {
+        margin-bottom: 28px;
+    }
+
+    .company-logo {
+        width: 56px;
+        height: 56px;
+    }
+
+    .company-section h2 {
+        font-size: 20px;
+    }
+
+    .company-subtitle {
+        font-size: 13px;
+    }
+
+    .login-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+}
+
+
+/* ===========================
+   Small Mobile
+   =========================== */
+
+@media (max-width:400px) {
+
+    .login-card {
+        padding: 12px;
+    }
+
+    .company-logo {
+        width: 52px;
+        height: 52px;
+    }
+
+    .company-section h2 {
+        font-size: 18px;
+    }
+}
+
+
+/* ===========================
+   Print
+   =========================== */
+
+@media print {
+
+    .left-panel {
+        display: none;
+    }
+
+    .login-card {
+        box-shadow: none;
+        border: 1px solid #DDD;
+    }
+}
+
+
+/* ===========================
+   Reduced Motion
+   =========================== */
+
+@media (prefers-reduced-motion:reduce) {
+
+    * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}

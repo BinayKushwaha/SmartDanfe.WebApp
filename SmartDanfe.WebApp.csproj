@@ -9,6 +9,19 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.27" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.27" PrivateAssets="all" />
+    <PackageReference Include="Syncfusion.Blazor" Version="33.2.15" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="33.2.15" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Components\" />
+    <Folder Include="Services\" />
+    <Folder Include="Pages\Warehouse\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\smartdanfe-banner.png" />
+    <None Include="wwwroot\Images\tenant-logo.png" />
   </ItemGroup>
 
 </Project>

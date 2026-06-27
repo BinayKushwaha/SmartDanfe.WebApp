@@ -1,0 +1,211 @@
+﻿@page "/login"
+@layout EmptyLayout
+
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Components.Forms
+@using SmartDanfe.WebApp.Models
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.Notifications
+
+@inject NavigationManager Navigation
+@* @inject ITenantService TenantService *@
+@* @inject IAuthenticationService AuthenticationService *@
+
+<PageTitle>SmartDanfe ERP - Login</PageTitle>
+
+<div class="login-page">
+
+    <!-- ========================================= -->
+    <!-- LEFT PANEL -->
+    <!-- ========================================= -->
+
+    <section class="left-panel">
+
+        <img src="/Images/smartdanfe-banner.png"
+             class="banner-image"
+             alt="SmartDanfe ERP" />
+
+    </section>
+
+    <!-- ========================================= -->
+    <!-- RIGHT PANEL -->
+    <!-- ========================================= -->
+
+    <section class="right-panel">
+
+        <div class="login-card">
+
+            <!-- Company -->
+
+            <div class="company-section">
+
+                <img src="@CompanyLogo"
+                     class="company-logo"
+                     alt="@CompanyName" />
+
+                <h2>@CompanyName</h2>
+
+                <span class="company-subtitle">
+
+                    Welcome back to SmartDanfe ERP
+
+                </span>
+
+            </div>
+
+            <!-- Login -->
+
+            <EditForm Model="@Model"
+                      OnValidSubmit="OnLoginAsync">
+
+                <DataAnnotationsValidator />
+
+                <div class="form-group">
+
+                    <SfTextBox Placeholder="Username"
+                               FloatLabelType="FloatLabelType.Always"
+                               @bind-Value="Model.Username">
+                    </SfTextBox>
+
+                    <ValidationMessage For="@(() => Model.Username)" />
+
+                </div>
+
+                <div class="form-group">
+
+                    <SfTextBox Placeholder="Password"
+                               FloatLabelType="FloatLabelType.Always"
+                               Type="@PasswordInputType"
+                               @bind-Value="Model.Password">
+
+                    </SfTextBox>
+
+                    <ValidationMessage For="@(() => Model.Password)" />
+
+                </div>
+
+                <div class="login-options">
+
+                    <SfCheckBox Label="Remember me"
+                                @bind-Checked="Model.RememberMe">
+                    </SfCheckBox>
+
+                    <button type="button"
+                            class="forgot-password-button">
+
+                        Forgot Password?
+
+                    </button>
+
+                </div>
+
+                <SfButton Type="Submit"
+                          CssClass="login-button"
+                          IsPrimary="true"
+                          Disabled="@IsLoading">
+
+                    @if (IsLoading)
+                    {
+                        <span class="spinner-border spinner-border-sm me-2"></span>
+                    }
+
+                    @(IsLoading ? "Signing In..." : "Sign In")
+
+                </SfButton>
+
+            </EditForm>
+
+            <!-- Footer -->
+
+            <div class="footer">
+
+                <div>
+
+                    Powered by
+
+                    <strong>SmartDanfe ERP</strong>
+
+                </div>
+
+                <div>
+
+                    Version @ApplicationVersion
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<SfToast @ref="Toast"></SfToast>
+
+@code
+{
+    private readonly LoginModel Model = new();
+
+    private SfToast? Toast;
+
+    private bool IsLoading;
+
+    private InputType PasswordInputType = InputType.Password;
+
+    private string CompanyName = "SmartDanfe Development";
+
+    private string CompanyLogo = "/Images/tenant-logo.png";
+
+    private string ApplicationVersion = "1.0.0";
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Future implementation
+
+        // var tenant = await TenantService.GetCurrentTenantAsync();
+
+        // CompanyName = tenant.CompanyName;
+
+        // CompanyLogo = tenant.LogoUrl;
+
+        await Task.CompletedTask;
+    }
+
+    private async Task OnLoginAsync()
+    {
+        try
+        {
+            IsLoading = true;
+
+            StateHasChanged();
+
+            // Future implementation
+
+            // var result =
+            // await AuthenticationService.LoginAsync(Model);
+
+            await Task.Delay(1000);
+
+            Navigation.NavigateTo("/dashboard");
+
+        }
+        catch (Exception ex)
+        {
+            if (Toast != null)
+            {
+                await Toast.ShowAsync(new ToastModel
+                {
+                    Title = "Login Failed",
+                    Content = ex.Message,
+                    CssClass = "e-toast-danger"
+                });
+            }
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+}
