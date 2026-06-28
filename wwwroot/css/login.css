@@ -1,10 +1,7 @@
 ﻿/* ==========================================================================
    SmartDanfe ERP — Login Page
+   Full-page banner background, card floats on right
    ========================================================================== */
-
-/* ===========================
-   Theme Tokens
-   =========================== */
 
 :root {
     --primary: #2563EB;
@@ -18,13 +15,9 @@
     --radius-input: 10px;
     --radius-btn: 10px;
     --transition: .22s ease;
-    --shadow-card: 0 20px 60px rgba(15,23,42,.10);
+    --shadow-card: 0 24px 64px rgba(15,23,42,.18);
     --font: Inter, "Segoe UI", system-ui, sans-serif;
 }
-
-/* ===========================
-   Reset
-   =========================== */
 
 *,
 *::before,
@@ -50,7 +43,7 @@ body {
 }
 
 /* ===========================
-   Page Shell
+   Page Wrapper
    =========================== */
 
 .login-wrapper {
@@ -61,46 +54,46 @@ body {
     overflow: hidden;
 }
 
-.login-page {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 58% 42%;
-    min-height: 0;
-    overflow: hidden;
-}
-
 /* ===========================
-   LEFT PANEL
-   Banner image is the entire content — no extra markup
+   Login Page
+   Banner fills everything, card sits on top-right
    =========================== */
 
-.left-panel {
-    overflow: hidden;
+.login-page {
+    flex: 1;
+    position: relative;
     min-height: 0;
-    background: #C8D9EF;
-    display: flex;
+    overflow: hidden;
 }
 
+/* Full-page banner — entire background including behind card */
 .banner-img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center center;
+    object-fit: fill;
     display: block;
+    z-index: 0;
+    background: #E4EDF8;
 }
 
 /* ===========================
-   RIGHT PANEL
+   Right Panel — fully transparent, no background at all
    =========================== */
 
 .right-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 42%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 24px 36px;
-    background: #F8FAFC;
-    overflow: hidden;
-    min-height: 0;
+    background: none;
+    z-index: 1;
 }
 
 /* ===========================
@@ -116,7 +109,6 @@ body {
     border: 1px solid var(--border);
     box-shadow: var(--shadow-card);
     animation: cardIn .40s ease;
-    max-height: 100%;
 }
 
 @keyframes cardIn {
@@ -141,7 +133,7 @@ body {
     gap: 12px;
     padding-bottom: 16px;
     border-bottom: 1px solid var(--border);
-    margin-bottom: 14px;
+    margin-bottom: 18px;
 }
 
 .tenant-logo {
@@ -154,52 +146,11 @@ body {
     flex-shrink: 0;
 }
 
-.tenant-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
 .tenant-name {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 700;
     color: var(--text);
     line-height: 1.2;
-}
-
-.tenant-url {
-    font-size: 13px;
-    color: var(--primary);
-    font-weight: 500;
-}
-
-/* ===========================
-   Workspace Notice
-   =========================== */
-
-.workspace-notice {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: #EFF6FF;
-    border: 1px solid #BFDBFE;
-    border-radius: 8px;
-    padding: 9px 13px;
-    margin-bottom: 18px;
-    font-size: 12.5px;
-    color: #1E40AF;
-    line-height: 1.4;
-}
-
-.notice-icon {
-    width: 15px;
-    height: 15px;
-    flex-shrink: 0;
-    color: #2563EB;
-}
-
-.workspace-notice strong {
-    font-weight: 600;
 }
 
 /* ===========================
@@ -207,15 +158,15 @@ body {
    =========================== */
 
 .welcome-section {
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
     .welcome-section h2 {
-        font-size: 24px;
+        font-size: 25px;
         font-weight: 800;
         color: var(--text);
         letter-spacing: -.3px;
-        margin-bottom: 3px;
+        margin-bottom: 4px;
     }
 
     .welcome-section p {
@@ -228,7 +179,7 @@ body {
    =========================== */
 
 .form-group {
-    margin-bottom: 14px;
+    margin-bottom: 15px;
 }
 
 .field-label {
@@ -238,10 +189,6 @@ body {
     color: #374151;
     margin-bottom: 6px;
 }
-
-/* ===========================
-   Input Wrapper
-   =========================== */
 
 .input-wrapper {
     position: relative;
@@ -266,7 +213,7 @@ body {
 .field-input {
     width: 100%;
     height: 44px;
-    padding: 0 40px 0 40px;
+    padding: 0 40px;
     font-size: 14px;
     font-family: var(--font);
     color: var(--text);
@@ -329,14 +276,14 @@ body {
 }
 
 /* ===========================
-   Login Options Row
+   Options Row
    =========================== */
 
 .login-options {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
 }
 
 .remember-me {
@@ -410,7 +357,6 @@ body {
     .login-button:disabled {
         background: #CBD5E1;
         cursor: not-allowed;
-        box-shadow: none;
     }
 
 .btn-arrow {
@@ -436,65 +382,6 @@ body {
 }
 
 /* ===========================
-   Or Divider
-   =========================== */
-
-.or-divider {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 14px 0;
-}
-
-.or-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-}
-
-.or-text {
-    font-size: 12.5px;
-    color: #94A3B8;
-    font-weight: 500;
-}
-
-/* ===========================
-   SSO Button
-   =========================== */
-
-.sso-button {
-    width: 100%;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-btn);
-    background: #FFFFFF;
-    color: var(--text);
-    font-size: 14px;
-    font-weight: 600;
-    font-family: var(--font);
-    cursor: pointer;
-    transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
-    margin-bottom: 14px;
-}
-
-    .sso-button:hover {
-        border-color: var(--primary);
-        background: var(--primary-light);
-        box-shadow: 0 2px 10px rgba(37,99,235,.10);
-    }
-
-.sso-icon {
-    width: 16px;
-    height: 16px;
-    color: var(--primary);
-    flex-shrink: 0;
-}
-
-/* ===========================
    Help Row
    =========================== */
 
@@ -505,6 +392,7 @@ body {
     gap: 6px;
     font-size: 13px;
     color: var(--text-light);
+    margin-top: 16px;
 }
 
 .help-icon {
@@ -539,6 +427,7 @@ body {
     border-top: 1px solid var(--border);
     font-size: 12px;
     color: #94A3B8;
+    z-index: 2;
 }
 
 .footer-security {
@@ -590,18 +479,15 @@ input:focus-visible {
    =========================== */
 
 @media (max-width: 1400px) {
-    .login-page {
-        grid-template-columns: 55% 45%;
-    }
-
     .right-panel {
+        width: 44%;
         padding: 20px 28px;
     }
 }
 
 @media (max-width: 1200px) {
-    .login-page {
-        grid-template-columns: 50% 50%;
+    .right-panel {
+        width: 48%;
     }
 
     .login-card {
@@ -614,18 +500,10 @@ input:focus-visible {
    =========================== */
 
 @media (max-width: 992px) {
-    .login-page {
-        grid-template-columns: 1fr;
-    }
-
-    .left-panel {
-        display: none;
-    }
-
     .right-panel {
-        overflow-y: auto;
-        align-items: flex-start;
-        padding: 40px 24px;
+        width: 100%;
+        background: rgba(255,255,255,.75);
+        backdrop-filter: blur(6px);
     }
 
     .login-card {
@@ -684,10 +562,6 @@ input:focus-visible {
    =========================== */
 
 @media print {
-    .left-panel {
-        display: none;
-    }
-
     .login-card {
         box-shadow: none;
         border: 1px solid #DDD;

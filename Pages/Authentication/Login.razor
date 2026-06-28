@@ -4,8 +4,6 @@
 @using System.ComponentModel.DataAnnotations
 @using Microsoft.AspNetCore.Components.Forms
 @using SmartDanfe.WebApp.Models
-@using Syncfusion.Blazor.Buttons
-@using Syncfusion.Blazor.Inputs
 @using Syncfusion.Blazor.Notifications
 
 @inject NavigationManager Navigation
@@ -14,26 +12,17 @@
 
 <PageTitle>SmartDanfe ERP - Login</PageTitle>
 
-<!-- Outer wrapper: flex column filling 100vh -->
 <div class="login-wrapper">
 
     <div class="login-page">
 
-        <!-- ========================================= -->
-        <!-- LEFT PANEL                                -->
-        <!-- ========================================= -->
-
-        <section class="left-panel">
-
-            <!-- Banner image contains all content (logo, tagline, icons, peacock) -->
-            <img src="/Images/smartdanfe-banner.png"
-                 class="banner-img"
-                 alt="SmartDanfe ERP" />
-
-        </section>
+        <!-- Full-bleed banner — covers entire left background -->
+        <img src="/Images/smartdanfe-banner.png"
+             class="banner-img"
+             alt="SmartDanfe ERP" />
 
         <!-- ========================================= -->
-        <!-- RIGHT PANEL                               -->
+        <!-- RIGHT PANEL — floats over banner          -->
         <!-- ========================================= -->
 
         <section class="right-panel">
@@ -45,20 +34,7 @@
                     <img src="@CompanyLogo"
                          class="tenant-logo"
                          alt="@CompanyName" />
-                    <div class="tenant-info">
-                        <span class="tenant-name">@CompanyName</span>
-                        <span class="tenant-url">@TenantUrl</span>
-                    </div>
-                </div>
-
-                <!-- Workspace Notice -->
-                <div class="workspace-notice">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-                         class="notice-icon">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    </svg>
-                    <span>You are accessing <strong>@CompanyName</strong> workspace</span>
+                    <span class="tenant-name">@CompanyName</span>
                 </div>
 
                 <!-- Welcome -->
@@ -167,24 +143,6 @@
 
                 </EditForm>
 
-                <!-- Or Divider -->
-                <div class="or-divider">
-                    <span class="or-line"></span>
-                    <span class="or-text">or</span>
-                    <span class="or-line"></span>
-                </div>
-
-                <!-- SSO Button -->
-                <button type="button" class="sso-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-                         class="sso-icon">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        <polyline points="9 12 11 14 15 10" />
-                    </svg>
-                    Sign in with SSO
-                </button>
-
                 <!-- Help -->
                 <div class="help-row">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -237,10 +195,8 @@
 
     private bool ShowPassword = false;
 
-    private string CompanyName = "Magnus Pharmaceuticals";
+    private string CompanyName = "SmartDanfe Pharmaceuticals";
     private string CompanyLogo = "/Images/tenant-logo.png";
-    private string TenantUrl = "www.magnus.smartdanfe.com";
-    private string ApplicationVersion = "1.0.0";
 
     protected override async Task OnInitializedAsync()
     {
@@ -248,7 +204,6 @@
         // var tenant = await TenantService.GetCurrentTenantAsync();
         // CompanyName = tenant.CompanyName;
         // CompanyLogo = tenant.LogoUrl;
-        // TenantUrl   = tenant.Url;
 
         await Task.CompletedTask;
     }
