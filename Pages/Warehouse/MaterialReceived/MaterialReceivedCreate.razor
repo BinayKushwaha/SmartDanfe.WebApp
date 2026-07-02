@@ -1,0 +1,150 @@
+﻿@page "/warehouse/material-received/create"
+@using Syncfusion.Blazor.Navigations
+
+<PageTitle>Material Received Checklist Create</PageTitle>
+
+<div class="page-container">
+    <div class="page-breadcrumb">
+        Warehouse
+        <span class="e-icons e-chevron-right"></span>
+        Material Received Checklist
+        <span class="e-icons e-chevron-right"></span>
+        <span class="current-page">Create</span>
+    </div>
+    <div class="page-header">
+        <div>
+            <h2>Material Received Checklist</h2>
+            <p class="page-description">
+                Capture and verify details of received materials
+            </p>
+        </div>
+        <div class="header-actions">
+            @if (SelectedTabIndex > 0)
+            {
+                <SfButton CssClass="e-outline smart-btn" OnClick="GoPreviousTab">
+                    <span class="smart-btn-content">
+                        <span class="e-icons e-arrow-left"></span>
+                        <span>Back</span>
+                    </span>
+                </SfButton>
+            }
+
+            <SfButton CssClass="e-outline e-info smart-btn">
+                <span class="smart-btn-content">
+                    <span class="e-icons e-reset"></span>
+                    <span>Reset</span>
+                </span>
+            </SfButton>
+
+            <SfButton CssClass="e-primary smart-btn">
+                <span class="smart-btn-content">
+                    <span class="e-icons e-save"></span>
+                    <span>Save Draft</span>
+                </span>
+            </SfButton>
+
+            <SfButton CssClass="e-outline e-primary smart-btn" OnClick="SaveAndNext">
+                <span class="smart-btn-content">
+                    <span class="e-icons e-arrow-right"></span>
+                    <span>@(SelectedTabIndex == LastTab ? "Submit" : "Next")</span>
+                </span>
+            </SfButton>
+        </div>
+    </div>
+
+    <!--TABS-->
+    <SfTab @ref="TabObj" @bind-SelectedItem="SelectedTabIndex" Width="100%">
+        <TabItems>
+
+            <TabItem>
+                <ChildContent>
+                    <TabHeader Text="General"></TabHeader>
+                </ChildContent>
+                <ContentTemplate>
+                    <MaterialInformationCard />
+                    <ReceiptInformationCard />
+                    <DateInformationCard />
+                </ContentTemplate>
+            </TabItem>
+
+            <TabItem>
+                <ChildContent>
+                    <TabHeader Text="Packaging"></TabHeader>
+                </ChildContent>
+                <ContentTemplate>
+                    <PackagingCard />
+                </ContentTemplate>
+            </TabItem>
+
+            <TabItem>
+                <ChildContent>
+                    <TabHeader Text="Import Details"></TabHeader>
+                </ChildContent>
+                <ContentTemplate>
+                    <ImportDetailsCard />
+                </ContentTemplate>
+            </TabItem>
+
+            <TabItem>
+                <ChildContent>
+                    <TabHeader Text="Quality"></TabHeader>
+                </ChildContent>
+                <ContentTemplate>
+                    <QualityCard />
+                </ContentTemplate>
+            </TabItem>
+
+            <TabItem>
+                <ChildContent>
+                    <TabHeader Text="Financial"></TabHeader>
+                </ChildContent>
+                <ContentTemplate>
+                    <FinancialCard />
+                </ContentTemplate>
+            </TabItem>
+
+            <TabItem>
+                <ChildContent>
+                    <TabHeader Text="Verified Containers"></TabHeader>
+                </ChildContent>
+                <ContentTemplate>
+                    <VerifiedContainersCard />
+                </ContentTemplate>
+            </TabItem>
+        </TabItems>
+    </SfTab>
+</div>
+
+@code {
+    private SfTab? TabObj;
+    private int SelectedTabIndex = 0;
+    private const int LastTab = 5;
+
+    private  void GoPreviousTab()
+    {
+        if (SelectedTabIndex > 0)
+        {
+            SelectedTabIndex--;
+        }
+    }
+
+    private void SaveAndNext()
+    {
+        // Validate current tab
+
+        // if (!ValidateCurrentTab())
+        //     return;
+
+        // Save draft
+        // await SaveDraft();
+
+        if (SelectedTabIndex < LastTab)
+        {
+            SelectedTabIndex++;
+        }
+        else
+        {
+            // await Submit();
+        }
+    }
+}

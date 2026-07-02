@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -16,7 +16,6 @@
   <ItemGroup>
     <Folder Include="Components\" />
     <Folder Include="Services\" />
-    <Folder Include="Pages\Warehouse\" />
   </ItemGroup>
 
   <ItemGroup>
